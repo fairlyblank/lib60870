@@ -208,7 +208,7 @@ main(int argc, char** argv)
 
     if (CS104_Slave_isRunning(slave) == false) {
         printf("Starting server failed!\n");
-        goto exit_program;
+        CS104_Slave_destroy(slave);
     }
 
     CS101_ASDU newAsdu = CS101_ASDU_create(appLayerParameters, false, CS101_COT_INITIALIZED, 0, 1, false, false);

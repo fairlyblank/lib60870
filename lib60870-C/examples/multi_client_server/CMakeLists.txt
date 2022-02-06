@@ -6,10 +6,10 @@ set(example_SRCS
    multi_client_server.c
 )
 
-IF(WIN32)
+IF(MSVC)
 set_source_files_properties(${example_SRCS}
                                        PROPERTIES LANGUAGE CXX)
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 add_executable(multi_client_server
   ${example_SRCS}

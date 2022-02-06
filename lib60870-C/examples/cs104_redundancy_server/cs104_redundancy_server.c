@@ -213,6 +213,8 @@ connectionEventHandler(void* parameter, IMasterConnection con, CS104_PeerConnect
 int
 main(int argc, char** argv)
 {
+    int16_t scaledValue = 0;
+
     /* Add Ctrl-C handler */
     signal(SIGINT, sigint_handler);
 
@@ -267,8 +269,6 @@ main(int argc, char** argv)
         printf("Starting server failed!\n");
         goto exit_program;
     }
-
-    int16_t scaledValue = 0;
 
     while (running) {
 

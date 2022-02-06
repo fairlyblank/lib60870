@@ -313,8 +313,8 @@ MessageQueue_enqueueASDU(MessageQueue self, CS101_ASDU asdu)
 
     memcpy(nextMsgPtr, &entryInfo, sizeof(struct sMessageQueueEntryInfo));
 
-    DEBUG_PRINT("CS104 SLAVE: ASDUs in FIFO: %i (new(size=%i/%i): %p, first: %p, last: %p lastInBuf: %p)\n", self->entryCounter, entrySize, asduSize, nextMsgPtr,
-            self->firstEntry, self->lastEntry, self->lastInBufferEntry);
+    // DEBUG_PRINT("CS104 SLAVE: ASDUs in FIFO: %i (new(size=%i/%i): %p, first: %p, last: %p lastInBuf: %p)\n", self->entryCounter, entrySize, asduSize, nextMsgPtr,
+    //        self->firstEntry, self->lastEntry, self->lastInBufferEntry);
 
 #if (CONFIG_USE_SEMAPHORES == 1)
     Semaphore_post(self->queueLock);

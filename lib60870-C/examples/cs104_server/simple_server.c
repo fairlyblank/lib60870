@@ -33,9 +33,9 @@ static void
 rawMessageHandler(void* parameter, IMasterConnection conneciton, uint8_t* msg, int msgSize, bool sent)
 {
     if (sent)
-        printf("SEND: ");
+        printf("[SEND]: ");
     else
-        printf("RCVD: ");
+        printf("[RCVD]: ");
 
     int i;
     for (i = 0; i < msgSize; i++) {
@@ -226,6 +226,8 @@ connectionEventHandler(void* parameter, IMasterConnection con, CS104_PeerConnect
 int
 main(int argc, char** argv)
 {
+    int16_t scaledValue = 0;
+
     /* Add Ctrl-C handler */
     signal(SIGINT, sigint_handler);
 
@@ -271,7 +273,7 @@ main(int argc, char** argv)
     CS104_Slave_setConnectionEventHandler(slave, connectionEventHandler, NULL);
 
     /* uncomment to log messages */
-    //CS104_Slave_setRawMessageHandler(slave, rawMessageHandler, NULL);
+    CS104_Slave_setRawMessageHandler(slave, rawMessageHandler, NULL);
 
     CS104_Slave_start(slave);
 
@@ -280,12 +282,10 @@ main(int argc, char** argv)
         goto exit_program;
     }
 
-    int16_t scaledValue = 0;
-
     while (running) {
 
-        Thread_sleep(1000);
-
+        Thread_sleep(5000);
+#if 0
         CS101_ASDU newAsdu = CS101_ASDU_create(alParams, false, CS101_COT_PERIODIC, 0, 1, false, false);
 
         InformationObject io = (InformationObject) MeasuredValueScaled_create(NULL, 110, scaledValue, IEC60870_QUALITY_GOOD);
@@ -300,6 +300,7 @@ main(int argc, char** argv)
         CS104_Slave_enqueueASDU(slave, newAsdu);
 
         CS101_ASDU_destroy(newAsdu);
+#endif        
     }
 
     CS104_Slave_stop(slave);

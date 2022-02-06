@@ -6,10 +6,10 @@ set(example_SRCS
    tls_server.c
 )
 
-IF(WIN32)
+IF(MSVC)
 set_source_files_properties(${example_SRCS}
                                        PROPERTIES LANGUAGE CXX)
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 configure_file(server-key.pem server-key.pem COPYONLY)
 configure_file(client1.cer client1.cer COPYONLY)

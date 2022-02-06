@@ -6,10 +6,10 @@ set(example_SRCS
    slave_example.c
 )
 
-IF(WIN32)
+IF(MSVC)
 set_source_files_properties(${example_SRCS}
                                        PROPERTIES LANGUAGE CXX)
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 add_executable(cs101_slave
   ${example_SRCS}

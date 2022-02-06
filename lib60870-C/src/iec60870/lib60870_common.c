@@ -34,7 +34,7 @@ lib60870_debug_print(const char *format, ...)
 {
 #if (CONFIG_DEBUG_OUTPUT == 1)
     if (debugOutputEnabled) {
-        printf("DEBUG_LIB60870: ");
+        printf("[DBG]: ");
         va_list ap;
         va_start(ap, format);
         vprintf(format, ap);

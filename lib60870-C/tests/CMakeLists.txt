@@ -7,10 +7,10 @@ set(tests_SRCS
    unity/unity.c
 )
 
-IF(WIN32)
+IF(MSVC)
 set_source_files_properties(${tests_SRCS}
                                        PROPERTIES LANGUAGE CXX)
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 configure_file(server-key.pem server-key.pem COPYONLY)
 configure_file(client1-key.pem client1-key.pem COPYONLY)

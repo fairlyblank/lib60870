@@ -10,9 +10,9 @@ static void
 rawMessageHandler (void* parameter, uint8_t* msg, int msgSize, bool sent)
 {
     if (sent)
-        printf("SEND: ");
+        printf("[SEND]: ");
     else
-        printf("RCVD: ");
+        printf("[RCVD]: ");
 
     int i;
     for (i = 0; i < msgSize; i++) {
@@ -133,7 +133,7 @@ main(int argc, char** argv)
         CS104_Connection_setLocalAddress(con, localIp, localPort);
 
     /* uncomment to log messages */
-    //CS104_Connection_setRawMessageHandler(con, rawMessageHandler, NULL);
+    CS104_Connection_setRawMessageHandler(con, rawMessageHandler, NULL);
 
     if (CS104_Connection_connect(con)) {
         printf("Connected!\n");

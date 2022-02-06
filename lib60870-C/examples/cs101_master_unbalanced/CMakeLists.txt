@@ -6,10 +6,10 @@ set(example_SRCS
    master_example.c
 )
 
-IF(WIN32)
+IF(MSVC)
 set_source_files_properties(${example_SRCS}
                                        PROPERTIES LANGUAGE CXX)
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 add_executable(cs101_master_unbalanced
   ${example_SRCS}
